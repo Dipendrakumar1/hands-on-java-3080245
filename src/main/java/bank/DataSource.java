@@ -57,7 +57,34 @@ public class DataSource {
     return cus;
   }
 
-  // Method to fetch the records fro
+  // Method to fetch the records from accounts table with account_id
+  public static Account getAccount(int accountId) {
+    Account act = null;
+    // This is preparedStatement;
+    String query = "select * from accounts where id=?";
+    try {
+      Connection conn = connect();
+      PreparedStatement pState = conn.prepareStatement(query);
+      pState.setInt(1, accountId);
+      ResultSet resultSet = pState.executeQuery();
+      while (resultSet.next()) {
+        int accId = resultSet.getInt("id");
+        String type = resultSet.getString("type");
+        double balance = resultSet.getDouble("balance");
+        act = new Account(accId, type, balance);
+      }
+      try {
+        conn.close();
+        System.out.println("Database connection closed.");
+        pState.close();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return act;
+  }
 
   public static void main(String[] args) {
     // Connection cc = connect();
@@ -71,6 +98,11 @@ public class DataSource {
     if (cus != null) {
       System.out.println(cus.getId() + "\n" + cus.getName() + "\n" + cus.getPassword());
     }
+    Account act = getAccount(12618);
+    if (act != null) {
+      System.out.println(act.getId() + "\n" + act.getType() + "\n" + act.getBalance());
+    }
+    
 
   }
 }
