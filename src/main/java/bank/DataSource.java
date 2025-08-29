@@ -86,23 +86,25 @@ public class DataSource {
     return act;
   }
 
-  public static void main(String[] args) {
-    // Connection cc = connect();
-    // try {
-    // cc.close();
-    // System.out.println("Database closed.");
-    // } catch (SQLException e) {
-    // e.printStackTrace();
-    // }
-    Customer cus = getCustomer("ttoulchi5@ehow.com");
-    if (cus != null) {
-      System.out.println(cus.getId() + "\n" + cus.getName() + "\n" + cus.getPassword());
-    }
-    Account act = getAccount(12618);
-    if (act != null) {
-      System.out.println(act.getId() + "\n" + act.getType() + "\n" + act.getBalance());
-    }
+  // public static void main(String[] args) {
+  //   // Connection cc = connect();
+  //   // try {
+  //   // cc.close();
+  //   // System.out.println("Database closed.");
+  //   // } catch (SQLException e) {
+  //   // e.printStackTrace();
+  //   // }
+  //   Customer cus = getCustomer("ttoulchi5@ehow.com");
+  //   if (cus != null) {
+  //     System.out.println(cus.getId() + "\n" + cus.getName() + "\n" + cus.getPassword());
+  //   }
+  //   Account act = getAccount(12618);
+  //   if (act != null) {
+  //     System.out.println(act.getId() + "\n" + act.getType() + "\n" + act.getBalance());
+  //   }
+
+
     
 
-  }
+  // }
 }
